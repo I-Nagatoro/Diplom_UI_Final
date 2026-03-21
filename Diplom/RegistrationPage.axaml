@@ -1,0 +1,88 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Diplom.RegistrationPage"
+        Width="460"
+        Height="760"
+        Title="Регистрация"
+        Background="#0F172A"
+        WindowStartupLocation="CenterScreen">
+
+  <Border Background="#111827"
+          CornerRadius="18"
+          Padding="24"
+          Margin="20">
+
+    <ScrollViewer>
+      <StackPanel Spacing="12">
+
+        <TextBlock Text="Регистрация"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,6"/>
+
+        <TextBlock Text="Создайте новый аккаунт"
+                   Foreground="#CBD5E1"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   Margin="0,0,0,10"/>
+
+        <TextBlock Text="Имя пользователя" Foreground="#CBD5E1"/>
+        <TextBox Name="UsernameBox" Watermark="Введите имя пользователя"/>
+
+        <TextBlock Text="Логин" Foreground="#CBD5E1"/>
+        <TextBox Name="LoginBox" Watermark="Введите логин"/>
+
+        <TextBlock Text="Пароль" Foreground="#CBD5E1"/>
+        <TextBox Name="PasswordBox"/>
+
+        <TextBlock Text="Подтвердите пароль" Foreground="#CBD5E1"/>
+        <TextBox Name="ConfirmPasswordBox"/>
+
+        <TextBlock Text="Изображение профиля (необязательно)"
+                   Foreground="#CBD5E1"
+                   Margin="0,6,0,0"/>
+
+        <Button Content="Выбрать изображение"
+                Click="SelectImage"
+                Background="#475569"
+                Foreground="White"
+                Padding="14,8"/>
+
+        <Border Background="#0F172A"
+                CornerRadius="14"
+                Padding="12"
+                HorizontalAlignment="Center"
+                Margin="0,4,0,0">
+          <Image x:Name="PreviewImage"
+                 Width="180"
+                 Height="180"
+                 Stretch="UniformToFill"/>
+        </Border>
+
+        <Button Content="Зарегистрироваться"
+                Click="Register"
+                Background="#059669"
+                Foreground="White"
+                Padding="14,8"
+                Margin="0,8,0,0"/>
+
+        <Button Content="Назад"
+                Click="GoBack"
+                Background="#475569"
+                Foreground="White"
+                Padding="14,8"/>
+
+        <TextBlock x:Name="StatusText"
+                   Foreground="#F87171"
+                   FontWeight="SemiBold"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   Margin="0,8,0,0"/>
+
+      </StackPanel>
+    </ScrollViewer>
+  </Border>
+</Window>

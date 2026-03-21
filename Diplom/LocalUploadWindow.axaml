@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Diplom.LocalUploadWindow"
+        Width="700"
+        Height="480"
+        Title="Локальный дубляж"
+        Background="#0F172A"
+        WindowStartupLocation="CenterScreen">
+
+  <Border Background="#111827"
+          CornerRadius="18"
+          Padding="24"
+          Margin="20">
+
+    <StackPanel Spacing="14">
+
+      <TextBlock Text="Локальный дубляж видео"
+                 FontSize="28"
+                 FontWeight="Bold"
+                 Foreground="White"/>
+
+      <TextBlock Text="Выберите видео на компьютере и запустите обработку."
+                 Foreground="#CBD5E1"
+                 TextWrapping="Wrap"/>
+
+      <TextBlock Text="Файл"
+                 Foreground="#CBD5E1"
+                 Margin="0,6,0,0"/>
+
+      <TextBox x:Name="FilePathBox"
+               IsReadOnly="True"
+               Watermark="Путь к файлу"/>
+
+      <StackPanel Orientation="Horizontal" Spacing="12">
+        <Button Content="Выбрать видео"
+                Click="SelectFile"
+                Background="#475569"
+                Foreground="White"
+                Padding="14,8"
+                MinWidth="150"/>
+
+        <Button x:Name="StartButton"
+                Content="Запустить дубляж"
+                Click="StartProcessing"
+                Background="#2563EB"
+                Foreground="White"
+                Padding="14,8"
+                MinWidth="170"/>
+      </StackPanel>
+
+      <ProgressBar x:Name="ProcessingBar"
+                   Minimum="0"
+                   Maximum="100"
+                   Height="18"
+                   IsVisible="False"/>
+
+      <Button x:Name="OpenResultButton"
+              Content="Открыть итоговое видео"
+              Click="OpenResult"
+              Background="#059669"
+              Foreground="White"
+              Padding="14,8"
+              IsVisible="False"
+              HorizontalAlignment="Left"/>
+
+      <TextBlock x:Name="StatusText"
+                 Foreground="#F87171"
+                 FontWeight="SemiBold"
+                 TextWrapping="Wrap"
+                 Margin="0,4,0,0"/>
+
+    </StackPanel>
+  </Border>
+</Window>

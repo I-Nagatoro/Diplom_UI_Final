@@ -1,0 +1,234 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sokol\\source\\repos\\Diplom\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\registrationpage.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\registrationpage.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\registrationpage.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\registrationpage.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\loginpage.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\loginpage.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\networkuploadwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\networkuploadwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\networkuploadwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\networkuploadwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\localuploadwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\localuploadwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\localuploadwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\localuploadwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\loginpage.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\loginpage.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\app.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\app.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sokol\\AppData\\Local\\Temp\\.vsdbgsrc\\6e727978eca1b21aeed2b66e749c46416932d1b4\\Diplom.MainWindow.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|c:\\users\\sokol\\source\\repos\\diplom\\diplom\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{666C272F-A70A-F013-1CB4-786A87BF6026}|Diplom\\Diplom.csproj|solutionrelative:diplom\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegistrationPage.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\RegistrationPage.axaml.cs",
+              "RelativeDocumentMoniker": "Diplom\\RegistrationPage.axaml.cs",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\RegistrationPage.axaml.cs",
+              "RelativeToolTip": "Diplom\\RegistrationPage.axaml.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAUwIoAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T13:24:42.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LocalUploadWindow.axaml",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\LocalUploadWindow.axaml",
+              "RelativeDocumentMoniker": "Diplom\\LocalUploadWindow.axaml",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\LocalUploadWindow.axaml",
+              "RelativeToolTip": "Diplom\\LocalUploadWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-21T14:58:34.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LocalUploadWindow.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\LocalUploadWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Diplom\\LocalUploadWindow.axaml.cs",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\LocalUploadWindow.axaml.cs",
+              "RelativeToolTip": "Diplom\\LocalUploadWindow.axaml.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAUwHsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T15:04:39.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NetworkUploadWindow.axaml",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\NetworkUploadWindow.axaml",
+              "RelativeDocumentMoniker": "Diplom\\NetworkUploadWindow.axaml",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\NetworkUploadWindow.axaml",
+              "RelativeToolTip": "Diplom\\NetworkUploadWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-21T14:58:42.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginPage.axaml",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\LoginPage.axaml",
+              "RelativeDocumentMoniker": "Diplom\\LoginPage.axaml",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\LoginPage.axaml",
+              "RelativeToolTip": "Diplom\\LoginPage.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-21T13:05:37.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NetworkUploadWindow.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\NetworkUploadWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Diplom\\NetworkUploadWindow.axaml.cs",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\NetworkUploadWindow.axaml.cs",
+              "RelativeToolTip": "Diplom\\NetworkUploadWindow.axaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T15:04:32.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.axaml",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\MainWindow.axaml",
+              "RelativeDocumentMoniker": "Diplom\\MainWindow.axaml",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\MainWindow.axaml",
+              "RelativeToolTip": "Diplom\\MainWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-21T13:04:31.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RegistrationPage.axaml",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\RegistrationPage.axaml",
+              "RelativeDocumentMoniker": "Diplom\\RegistrationPage.axaml",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\RegistrationPage.axaml",
+              "RelativeToolTip": "Diplom\\RegistrationPage.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-21T13:24:36.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginPage.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\LoginPage.axaml.cs",
+              "RelativeDocumentMoniker": "Diplom\\LoginPage.axaml.cs",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\LoginPage.axaml.cs",
+              "RelativeToolTip": "Diplom\\LoginPage.axaml.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowB0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T13:05:45.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.axaml",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\App.axaml",
+              "RelativeDocumentMoniker": "Diplom\\App.axaml",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\App.axaml",
+              "RelativeToolTip": "Diplom\\App.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-21T15:00:00.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainWindow.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\MainWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Diplom\\MainWindow.axaml.cs",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\MainWindow.axaml.cs",
+              "RelativeToolTip": "Diplom\\MainWindow.axaml.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAUwGgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T13:08:32.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Diplom.MainWindow.g.cs",
+              "DocumentMoniker": "C:\\Users\\sokol\\AppData\\Local\\Temp\\.vsdbgsrc\\6e727978eca1b21aeed2b66e749c46416932d1b4\\Diplom.MainWindow.g.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\6e727978eca1b21aeed2b66e749c46416932d1b4\\Diplom.MainWindow.g.cs",
+              "ToolTip": "C:\\Users\\sokol\\AppData\\Local\\Temp\\.vsdbgsrc\\6e727978eca1b21aeed2b66e749c46416932d1b4\\Diplom.MainWindow.g.cs [\u0422\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u0435\u043D\u0438\u0435]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\6e727978eca1b21aeed2b66e749c46416932d1b4\\Diplom.MainWindow.g.cs [\u0422\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u0435\u043D\u0438\u0435]",
+              "ViewState": "AgIAABUAAAAAAAAAAAAhwCcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T14:56:46.316Z",
+              "EditorCaption": " [\u0422\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u0435\u043D\u0438\u0435]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Diplom\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\Models\\User.cs",
+              "RelativeToolTip": "Diplom\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T13:04:36.944Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

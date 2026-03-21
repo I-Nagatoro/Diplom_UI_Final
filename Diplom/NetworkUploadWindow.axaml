@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Diplom.NetworkUploadWindow"
+        Width="700"
+        Height="380"
+        Title="Загрузка по ссылке"
+        Background="#0F172A"
+        WindowStartupLocation="CenterScreen">
+
+  <Border Background="#111827"
+          CornerRadius="18"
+          Padding="24"
+          Margin="20">
+
+    <StackPanel Spacing="14">
+
+      <TextBlock Text="Загрузка видео по ссылке"
+                 FontSize="28"
+                 FontWeight="Bold"
+                 Foreground="White"/>
+
+      <TextBlock Text="Вставьте ссылку на видео и отправьте его на обработку."
+                 Foreground="#CBD5E1"
+                 TextWrapping="Wrap"/>
+
+      <TextBlock Text="Ссылка"
+                 Foreground="#CBD5E1"
+                 Margin="0,6,0,0"/>
+
+      <TextBox x:Name="UrlBox"
+               Watermark="https://..."/>
+
+      <Button Content="Загрузить"
+              Click="DownloadVideo"
+              Background="#2563EB"
+              Foreground="White"
+              Padding="14,8"
+              HorizontalAlignment="Left"
+              MinWidth="150"/>
+
+      <TextBlock x:Name="StatusText"
+                 Foreground="#F87171"
+                 FontWeight="SemiBold"
+                 TextWrapping="Wrap"
+                 Margin="0,4,0,0"/>
+
+    </StackPanel>
+  </Border>
+</Window>
