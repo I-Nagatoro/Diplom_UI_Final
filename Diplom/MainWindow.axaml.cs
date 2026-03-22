@@ -4,6 +4,7 @@ using Avalonia.Media.Imaging;
 using Diplom.Models;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Diplom;
 
@@ -54,14 +55,16 @@ public partial class MainWindow : Window
         AvatarImage.Source = null;
     }
 
-    private void OpenLogin(object? sender, RoutedEventArgs e)
+    private async void OpenLogin(object? sender, RoutedEventArgs e)
     {
-        new LoginPage(this).Show();
+        var loginWindow = new LoginPage(this);
+        await loginWindow.ShowDialog(this);
     }
 
-    private void OpenRegistration(object? sender, RoutedEventArgs e)
+    private async void OpenRegistration(object? sender, RoutedEventArgs e)
     {
-        new RegistrationPage(this).Show();
+        var regWindow = new RegistrationPage(this);
+        await regWindow.ShowDialog(this);
     }
 
     private void Logout(object? sender, RoutedEventArgs e)
@@ -69,14 +72,16 @@ public partial class MainWindow : Window
         UpdateUIForGuest();
     }
 
-    private void OpenLocalUpload(object? sender, RoutedEventArgs e)
+    private async void OpenLocalUpload(object? sender, RoutedEventArgs e)
     {
-        new LocalUploadWindow().Show();
+        var localWindow = new LocalUploadWindow();
+        await localWindow.ShowDialog(this);
     }
 
-    private void OpenNetworkUpload(object? sender, RoutedEventArgs e)
+    private async void OpenNetworkUpload(object? sender, RoutedEventArgs e)
     {
-        new NetworkUploadWindow().Show();
+        var networkWindow = new NetworkUploadWindow();
+        await networkWindow.ShowDialog(this);
     }
 
     public User? GetCurrentUser() => _currentUser;

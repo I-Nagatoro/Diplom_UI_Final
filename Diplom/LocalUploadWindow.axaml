@@ -32,16 +32,25 @@
                Watermark="Путь к файлу"/>
 
       <StackPanel Orientation="Horizontal" Spacing="12">
-        <Button Content="Выбрать видео"
+        <Button Name="SelectBtn"
+                Content="Выбрать видео"
                 Click="SelectFile"
                 Background="#475569"
                 Foreground="White"
                 Padding="14,8"
                 MinWidth="150"/>
 
-        <Button x:Name="StartButton"
+        <Button Name="StartButton"
                 Content="Запустить дубляж"
                 Click="StartProcessing"
+                Background="#2563EB"
+                Foreground="White"
+                Padding="14,8"
+                MinWidth="170"/>
+
+        <Button Name="BackBtn"
+                Content="Назад"
+                Click="Back_Click"
                 Background="#2563EB"
                 Foreground="White"
                 Padding="14,8"

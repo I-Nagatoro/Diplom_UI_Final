@@ -23,4 +23,9 @@ public partial class NetworkUploadWindow : Window
         await Task.Delay(2000);
         StatusText.Text = "Видео загружено и отправлено на обработку.";
     }
+
+    private void Back_Click(object? sender, RoutedEventArgs e)
+    {
+        Close();
+    }
 }

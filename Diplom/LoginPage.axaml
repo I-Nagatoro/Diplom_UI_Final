@@ -1,8 +1,8 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="Diplom.LoginPage"
-        Width="430"
-        Height="520"
+        Width="420"
+        Height="400"
         Title="Вход"
         Background="#0F172A"
         WindowStartupLocation="CenterScreen">
@@ -29,31 +29,33 @@
                  Margin="0,0,0,10"/>
 
       <TextBlock Text="Логин" Foreground="#CBD5E1"/>
-      <TextBox x:Name="LoginBox" Watermark="Введите логин"/>
+      <TextBox Name="LoginBox" Watermark="Введите логин"/>
 
       <TextBlock Text="Пароль" Foreground="#CBD5E1"/>
-      <TextBox x:Name="PasswordBox"/>
-
+      <TextBox Name="PasswordBox"
+               Watermark="********"/>
+      <StackPanel Orientation="Horizontal"
+                  Margin="0,8,0,0"
+                  Spacing="14"
+                  HorizontalAlignment="Center">
       <Button Content="Войти"
               Click="Login"
               Background="#059669"
               Foreground="White"
-              Padding="14,8"
-              Margin="0,8,0,0"/>
+              HorizontalAlignment="Center"/>
 
-      <Button Content="Назад"
-              Click="GoBack"
-              Background="#475569"
-              Foreground="White"
-              Padding="14,8"/>
-
-      <TextBlock x:Name="StatusText"
-                 Foreground="#F87171"
-                 FontWeight="SemiBold"
-                 TextAlignment="Center"
-                 TextWrapping="Wrap"
-                 Margin="0,8,0,0"/>
-
+          <Button Content="Назад"
+                  Click="GoBack"
+                  HorizontalAlignment="Center"
+                  Background="#475569"
+                  Foreground="White"/>
+      </StackPanel>
+          <TextBlock Name="StatusText"
+                     Foreground="#F87171"
+                     FontWeight="SemiBold"
+                     TextAlignment="Center"
+                     TextWrapping="Wrap"
+                     Margin="0,8,0,0"/>
     </StackPanel>
   </Border>
 </Window>

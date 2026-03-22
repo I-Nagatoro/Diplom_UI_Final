@@ -81,6 +81,8 @@ public partial class LocalUploadWindow : Window
 
         StartButton.IsEnabled = false;
         OpenResultButton.IsVisible = false;
+        SelectBtn.IsEnabled = false;
+        BackBtn.IsEnabled = false;
         ProcessingBar.IsVisible = true;
         ProcessingBar.Value = 0;
         StatusText.Text = "Начата обработка...";
@@ -107,6 +109,8 @@ public partial class LocalUploadWindow : Window
         finally
         {
             StartButton.IsEnabled = true;
+            BackBtn.IsEnabled = true;
+            SelectBtn.IsEnabled = true;
         }
     }
 
@@ -120,5 +124,10 @@ public partial class LocalUploadWindow : Window
             FileName = _resultPath,
             UseShellExecute = true
         });
+    }
+
+    private void Back_Click(object? sender, RoutedEventArgs e)
+    {
+        Close();
     }
 }

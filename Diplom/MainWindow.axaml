@@ -7,230 +7,177 @@
         Background="#0F172A"
         WindowStartupLocation="CenterScreen">
 
-  <Grid RowDefinitions="72,*">
+  <Grid Margin="20">
 
-    <!-- TOP BAR -->
-    <Border Grid.Row="0" Background="#020617">
-      <Grid Margin="20,0" ColumnDefinitions="Auto,*,Auto" VerticalAlignment="Center">
+    <!-- GUEST VIEW -->
+    <Border x:Name="GuestContent"
+            Background="#111827"
+            CornerRadius="18"
+            Padding="30"
+            IsVisible="True">
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
-          <Ellipse Width="12" Height="12" Fill="#38BDF8"/>
-          <TextBlock Text="VIDEO AI"
-                     Foreground="#38BDF8"
+      <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Заголовок -->
+        <StackPanel Spacing="10" HorizontalAlignment="Center">
+          <TextBlock Text="VIDEO TRANSLATOR"
                      FontSize="20"
+                     Foreground="#38BDF8"
                      FontWeight="Bold"
-                     VerticalAlignment="Center"/>
+                     HorizontalAlignment="Center"/>
+
+          <TextBlock Text="Добро пожаловать"
+                     FontSize="30"
+                     FontWeight="Bold"
+                     Foreground="White"
+                     HorizontalAlignment="Center"/>
+
+          <TextBlock Text="Войдите в систему или зарегистрируйтесь, чтобы начать работу."
+                     FontSize="15"
+                     Foreground="#CBD5E1"
+                     TextAlignment="Center"
+                     TextWrapping="Wrap"
+                     MaxWidth="520"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="1"
-                    Orientation="Horizontal"
-                    Spacing="10"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
+        <!-- Центр -->
+        <Border Grid.Row="1"
+                Background="#0F172A"
+                CornerRadius="18"
+                Padding="30"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="560">
 
-          <Button x:Name="BtnLocalUpload"
-                  Content="Локальная загрузка"
-                  Click="OpenLocalUpload"
-                  IsEnabled="False"
-                  Background="#1D4ED8"
-                  Foreground="White"
-                  Padding="14,8"
-                  MinWidth="170"/>
+          <StackPanel Spacing="20" HorizontalAlignment="Center">
 
-          <Button x:Name="BtnNetworkUpload"
-                  Content="Загрузка по ссылке"
-                  Click="OpenNetworkUpload"
-                  IsEnabled="False"
-                  Background="#1D4ED8"
-                  Foreground="White"
-                  Padding="14,8"
-                  MinWidth="170"/>
+            <TextBlock Text="Видео-перевод и дубляж"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Foreground="White"
+                       HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Загрузка видео, обработка, контроль прогресса и просмотр результата."
+                       FontSize="15"
+                       Foreground="#94A3B8"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"/>
+
+            <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center">
+              <Button x:Name="BtnLogin"
+                      Content="Войти"
+                      Click="OpenLogin"
+                      Background="#059669"
+                      Foreground="White"
+                      Padding="14,8"
+                      MinWidth="120"/>
+
+              <Button x:Name="BtnRegister"
+                      Content="Регистрация"
+                      Click="OpenRegistration"
+                      Background="#2563EB"
+                      Foreground="White"
+                      Padding="14,8"
+                      MinWidth="120"/>
+            </StackPanel>
+
+          </StackPanel>
+        </Border>
+
+      </Grid>
+    </Border>
+
+    <!-- USER VIEW -->
+    <Border x:Name="UserContent"
+            Background="#111827"
+            CornerRadius="18"
+            Padding="24"
+            IsVisible="False">
+
+      <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="18">
+
+        <!-- Header -->
+        <StackPanel Orientation="Horizontal" Spacing="14">
+          <Border Width="72" Height="72" CornerRadius="36" Background="#0F172A" ClipToBounds="True">
+            <Image x:Name="AvatarImage"
+                   Width="72"
+                   Height="72"
+                   Stretch="UniformToFill"/>
+          </Border>
+
+          <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Главная"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="White"/>
+            <TextBlock x:Name="WelcomeText"
+                       FontSize="15"
+                       Foreground="#CBD5E1"
+                       TextWrapping="Wrap"/>
+          </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Column="2"
+        <!-- Описание -->
+        <Border Grid.Row="1" Background="#0F172A" CornerRadius="14" Padding="18">
+          <TextBlock Text="Выберите сценарий работы:"
+                     FontSize="15"
+                     Foreground="#CBD5E1"/>
+        </Border>
+
+        <!-- Карточки -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="16">
+
+          <Border Background="#0F172A" CornerRadius="16" Padding="20">
+            <StackPanel Spacing="12">
+              <TextBlock Text="Локальный дубляж"
+                         FontSize="20"
+                         FontWeight="SemiBold"
+                         Foreground="White"/>
+              <TextBlock Text="Загрузка видео с компьютера."
+                         Foreground="#94A3B8"/>
+              <Button x:Name="BtnLocalUpload"
+                      Content="Открыть"
+                      Click="OpenLocalUpload"
+                      Background="#1D4ED8"
+                      Foreground="White"
+                      Padding="14,8"/>
+            </StackPanel>
+          </Border>
+
+          <Border Grid.Column="1" Background="#0F172A" CornerRadius="16" Padding="20">
+            <StackPanel Spacing="12">
+              <TextBlock Text="Загрузка по ссылке"
+                         FontSize="20"
+                         FontWeight="SemiBold"
+                         Foreground="White"/>
+              <TextBlock Text="Вставьте ссылку на видео."
+                         Foreground="#94A3B8"/>
+              <Button x:Name="BtnNetworkUpload"
+                      Content="Открыть"
+                      Click="OpenNetworkUpload"
+                      Background="#1D4ED8"
+                      Foreground="White"
+                      Padding="14,8"/>
+            </StackPanel>
+          </Border>
+
+        </Grid>
+
+        <!-- Logout -->
+        <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
-                    Spacing="10"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center">
-
-          <Button x:Name="BtnLogin"
-                  Content="Вход"
-                  Click="OpenLogin"
-                  Background="#059669"
-                  Foreground="White"
-                  Padding="14,8"
-                  MinWidth="100"/>
-
-          <Button x:Name="BtnRegister"
-                  Content="Регистрация"
-                  Click="OpenRegistration"
-                  Background="#2563EB"
-                  Foreground="White"
-                  Padding="14,8"
-                  MinWidth="120"/>
+                    HorizontalAlignment="Right">
 
           <Button x:Name="BtnLogout"
                   Content="Выход"
                   Click="Logout"
-                  IsVisible="False"
                   Background="#B91C1C"
                   Foreground="White"
-                  Padding="14,8"
-                  MinWidth="100"/>
+                  Padding="14,8"/>
         </StackPanel>
 
       </Grid>
     </Border>
 
-    <!-- MAIN AREA -->
-    <Grid Grid.Row="1" Margin="20">
-
-      <!-- GUEST VIEW -->
-      <Border x:Name="GuestContent"
-              Background="#111827"
-              CornerRadius="18"
-              Padding="30"
-              IsVisible="True">
-
-        <Grid RowDefinitions="Auto,*">
-          <StackPanel Spacing="8" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <TextBlock Text="Добро пожаловать"
-                       FontSize="30"
-                       FontWeight="Bold"
-                       Foreground="White"
-                       HorizontalAlignment="Center"/>
-            <TextBlock Text="Войдите в систему или зарегистрируйтесь, чтобы начать работу."
-                       FontSize="15"
-                       Foreground="#CBD5E1"
-                       HorizontalAlignment="Center"
-                       TextAlignment="Center"
-                       TextWrapping="Wrap"
-                       MaxWidth="520"/>
-          </StackPanel>
-
-          <Border Grid.Row="1"
-                  Background="#0F172A"
-                  CornerRadius="18"
-                  Padding="24"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  Width="560"
-                  MaxWidth="700">
-
-            <StackPanel Spacing="16" HorizontalAlignment="Center">
-              <TextBlock Text="Видео-перевод и дубляж"
-                         FontSize="24"
-                         FontWeight="SemiBold"
-                         Foreground="White"
-                         HorizontalAlignment="Center"/>
-
-              <TextBlock Text="Здесь будет доступна загрузка видео, обработка, контроль прогресса и просмотр результата."
-                         FontSize="15"
-                         Foreground="#94A3B8"
-                         TextAlignment="Center"
-                         TextWrapping="Wrap"
-                         HorizontalAlignment="Center"/>
-
-              <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center">
-                <Button Content="Войти"
-                        Click="OpenLogin"
-                        Background="#059669"
-                        Foreground="White"
-                        Padding="14,8"
-                        MinWidth="120"/>
-
-                <Button Content="Регистрация"
-                        Click="OpenRegistration"
-                        Background="#2563EB"
-                        Foreground="White"
-                        Padding="14,8"
-                        MinWidth="120"/>
-              </StackPanel>
-            </StackPanel>
-          </Border>
-        </Grid>
-      </Border>
-
-      <!-- USER VIEW -->
-      <Border x:Name="UserContent"
-              Background="#111827"
-              CornerRadius="18"
-              Padding="24"
-              IsVisible="False">
-
-        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="18">
-
-          <StackPanel Orientation="Horizontal" Spacing="14">
-            <Border Width="72" Height="72" CornerRadius="36" Background="#0F172A" ClipToBounds="True">
-              <Image x:Name="AvatarImage"
-                     Width="72"
-                     Height="72"
-                     Stretch="UniformToFill"/>
-            </Border>
-
-            <StackPanel VerticalAlignment="Center">
-              <TextBlock Text="Главная"
-                         FontSize="30"
-                         FontWeight="Bold"
-                         Foreground="White"/>
-              <TextBlock x:Name="WelcomeText"
-                         FontSize="15"
-                         Foreground="#CBD5E1"
-                         TextWrapping="Wrap"/>
-            </StackPanel>
-          </StackPanel>
-
-          <Border Grid.Row="1" Background="#0F172A" CornerRadius="14" Padding="18">
-            <TextBlock Text="Выберите сценарий работы: локальная загрузка или загрузка по ссылке."
-                       FontSize="15"
-                       Foreground="#CBD5E1"
-                       TextWrapping="Wrap"/>
-          </Border>
-
-          <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="16">
-
-            <Border Background="#0F172A" CornerRadius="16" Padding="20">
-              <StackPanel Spacing="12">
-                <TextBlock Text="Локальный дубляж"
-                           FontSize="20"
-                           FontWeight="SemiBold"
-                           Foreground="White"/>
-                <TextBlock Text="Загрузка видео с компьютера и запуск обработки."
-                           Foreground="#94A3B8"
-                           TextWrapping="Wrap"/>
-                <Button Content="Открыть"
-                        Click="OpenLocalUpload"
-                        Background="#1D4ED8"
-                        Foreground="White"
-                        Padding="14,8"
-                        MinWidth="120"
-                        HorizontalAlignment="Left"/>
-              </StackPanel>
-            </Border>
-
-            <Border Grid.Column="1" Background="#0F172A" CornerRadius="16" Padding="20">
-              <StackPanel Spacing="12">
-                <TextBlock Text="Загрузка по ссылке"
-                           FontSize="20"
-                           FontWeight="SemiBold"
-                           Foreground="White"/>
-                <TextBlock Text="Вставьте ссылку на видео и отправьте на обработку."
-                           Foreground="#94A3B8"
-                           TextWrapping="Wrap"/>
-                <Button Content="Открыть"
-                        Click="OpenNetworkUpload"
-                        Background="#1D4ED8"
-                        Foreground="White"
-                        Padding="14,8"
-                        MinWidth="120"
-                        HorizontalAlignment="Left"/>
-              </StackPanel>
-            </Border>
-
-          </Grid>
-        </Grid>
-      </Border>
-
-    </Grid>
   </Grid>
 </Window>

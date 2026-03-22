@@ -27,18 +27,26 @@
                  Foreground="#CBD5E1"
                  Margin="0,6,0,0"/>
 
-      <TextBox x:Name="UrlBox"
+      <TextBox Name="UrlBox"
                Watermark="https://..."/>
+      <StackPanel Orientation="Horizontal"
+                  Spacing="10">
+          <Button Content="Загрузить"
+                  Click="DownloadVideo"
+                  Background="#2563EB"
+                  Foreground="White"
+                  Padding="14,8"
+                  HorizontalAlignment="Left"
+                  MinWidth="150"/>
+          <Button Content="Назад"
+                  Click="Back_Click"
+                  Background="#2563EB"
+                  Foreground="White"
+                  Padding="14,8"
+                  HorizontalAlignment="Left"/>
+      </StackPanel>
 
-      <Button Content="Загрузить"
-              Click="DownloadVideo"
-              Background="#2563EB"
-              Foreground="White"
-              Padding="14,8"
-              HorizontalAlignment="Left"
-              MinWidth="150"/>
-
-      <TextBlock x:Name="StatusText"
+      <TextBlock Name="StatusText"
                  Foreground="#F87171"
                  FontWeight="SemiBold"
                  TextWrapping="Wrap"

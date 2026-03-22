@@ -1,88 +1,104 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="Diplom.RegistrationPage"
-        Width="460"
-        Height="760"
+        Width="900"
+        Height="500"
         Title="Регистрация"
         Background="#0F172A"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterOwner">
 
   <Border Background="#111827"
           CornerRadius="18"
-          Padding="24"
+          Padding="30"
           Margin="20">
 
-    <ScrollViewer>
-      <StackPanel Spacing="12">
+    <Grid ColumnDefinitions="1.2*,1*"
+          RowDefinitions="Auto,*"
+          ColumnSpacing="30">
 
+      <!-- HEADER -->
+      <StackPanel Grid.ColumnSpan="2" Spacing="6" Margin="0,0,0,10">
         <TextBlock Text="Регистрация"
-                   FontSize="28"
+                   FontSize="30"
                    FontWeight="Bold"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   Margin="0,0,0,6"/>
-
+                   Foreground="White"/>
         <TextBlock Text="Создайте новый аккаунт"
-                   Foreground="#CBD5E1"
-                   HorizontalAlignment="Center"
-                   TextAlignment="Center"
-                   TextWrapping="Wrap"
-                   Margin="0,0,0,10"/>
+                   Foreground="#CBD5E1"/>
+      </StackPanel>
+
+      <!-- ЛЕВАЯ ЧАСТЬ (ФОРМА) -->
+      <StackPanel Grid.Row="1" Spacing="12">
 
         <TextBlock Text="Имя пользователя" Foreground="#CBD5E1"/>
-        <TextBox Name="UsernameBox" Watermark="Введите имя пользователя"/>
+        <TextBox x:Name="UsernameBox" Watermark="Введите имя"/>
 
         <TextBlock Text="Логин" Foreground="#CBD5E1"/>
-        <TextBox Name="LoginBox" Watermark="Введите логин"/>
+        <TextBox x:Name="LoginBox" Watermark="Введите логин"/>
 
         <TextBlock Text="Пароль" Foreground="#CBD5E1"/>
-        <TextBox Name="PasswordBox"/>
+        <TextBox x:Name="PasswordBox"
+                 Watermark="********"/>
 
         <TextBlock Text="Подтвердите пароль" Foreground="#CBD5E1"/>
-        <TextBox Name="ConfirmPasswordBox"/>
+        <TextBox x:Name="ConfirmPasswordBox"
+                 Watermark="********"/>
 
-        <TextBlock Text="Изображение профиля (необязательно)"
-                   Foreground="#CBD5E1"
-                   Margin="0,6,0,0"/>
+        <StackPanel Orientation="Horizontal" Spacing="12" Margin="0,10,0,0">
 
-        <Button Content="Выбрать изображение"
-                Click="SelectImage"
-                Background="#475569"
-                Foreground="White"
-                Padding="14,8"/>
+          <Button Content="Зарегистрироваться"
+                  Click="Register"
+                  Background="#059669"
+                  Foreground="White"
+                  Padding="14,8"
+                  MinWidth="180"/>
 
-        <Border Background="#0F172A"
-                CornerRadius="14"
-                Padding="12"
-                HorizontalAlignment="Center"
-                Margin="0,4,0,0">
-          <Image x:Name="PreviewImage"
-                 Width="180"
-                 Height="180"
-                 Stretch="UniformToFill"/>
-        </Border>
+          <Button Content="Назад"
+                  Click="GoBack"
+                  Background="#475569"
+                  Foreground="White"
+                  Padding="14,8"
+                  MinWidth="120"/>
 
-        <Button Content="Зарегистрироваться"
-                Click="Register"
-                Background="#059669"
-                Foreground="White"
-                Padding="14,8"
-                Margin="0,8,0,0"/>
-
-        <Button Content="Назад"
-                Click="GoBack"
-                Background="#475569"
-                Foreground="White"
-                Padding="14,8"/>
+        </StackPanel>
 
         <TextBlock x:Name="StatusText"
                    Foreground="#F87171"
                    FontWeight="SemiBold"
-                   TextAlignment="Center"
                    TextWrapping="Wrap"
-                   Margin="0,8,0,0"/>
+                   Margin="0,10,0,0"/>
 
       </StackPanel>
-    </ScrollViewer>
+
+      <!-- ПРАВАЯ ЧАСТЬ (АВАТАР) -->
+      <StackPanel Grid.Column="1"
+                  Grid.Row="1"
+                  Spacing="12"
+                  HorizontalAlignment="Center">
+
+        <TextBlock Text="Изображение профиля"
+                   Foreground="#CBD5E1"
+                   HorizontalAlignment="Center"/>
+
+        <Button Content="Выбрать изображение"
+                Click="SelectImage"
+                HorizontalAlignment="Center"
+                Background="#475569"
+                Foreground="White"
+                Padding="14,8"
+                MinWidth="200"/>
+
+        <Border Background="#0F172A"
+                CornerRadius="16"
+                Padding="10">
+
+          <Image Name="PreviewImage"
+                 Width="220"
+                 Height="220"/>
+
+        </Border>
+
+      </StackPanel>
+
+    </Grid>
   </Border>
 </Window>
