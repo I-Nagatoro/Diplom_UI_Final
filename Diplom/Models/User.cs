@@ -1,5 +1,4 @@
-﻿using Avalonia.Media.Imaging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Diplom.Models;
@@ -17,10 +16,6 @@ public partial class User
     public int RoleId { get; set; }
 
     public string ImagePath { get; set; } = null!;
-    public Bitmap Image { get
-        {
-            return new Bitmap(AppDomain.CurrentDomain.BaseDirectory + "/" + ImagePath);
-        } }
 
     public virtual ICollection<History> Histories { get; set; } = new List<History>();
 

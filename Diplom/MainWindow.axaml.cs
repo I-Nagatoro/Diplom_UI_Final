@@ -28,8 +28,6 @@ public partial class MainWindow : Window
         BtnLogin.IsVisible = false;
         BtnRegister.IsVisible = false;
 
-        BtnLocalUpload.IsEnabled = true;
-        BtnNetworkUpload.IsEnabled = true;
         BtnLogout.IsVisible = true;
 
         WelcomeText.Text = $"Добро пожаловать, {user.UserName}!";
@@ -47,8 +45,6 @@ public partial class MainWindow : Window
         BtnLogin.IsVisible = true;
         BtnRegister.IsVisible = true;
 
-        BtnLocalUpload.IsEnabled = false;
-        BtnNetworkUpload.IsEnabled = false;
         BtnLogout.IsVisible = false;
 
         WelcomeText.Text = string.Empty;
@@ -74,14 +70,37 @@ public partial class MainWindow : Window
 
     private async void OpenLocalUpload(object? sender, RoutedEventArgs e)
     {
-        var localWindow = new LocalUploadWindow();
-        await localWindow.ShowDialog(this);
+        if (_currentUser == null)
+            return;
+
+        var window = new LocalUploadWindow(_currentUser);
+        await window.ShowDialog(this);
     }
 
     private async void OpenNetworkUpload(object? sender, RoutedEventArgs e)
     {
-        var networkWindow = new NetworkUploadWindow();
-        await networkWindow.ShowDialog(this);
+        if (_currentUser == null)
+            return;
+
+        var window = new NetworkUploadWindow(_currentUser);
+        await window.ShowDialog(this);
+    }
+    private async void OpenActiveOrders(object? sender, RoutedEventArgs e)
+    {
+        if (_currentUser == null)
+            return;
+
+        var window = new ActiveOrdersWindow(_currentUser);
+        await window.ShowDialog(this);
+    }
+
+    private async void OpenHistory(object? sender, RoutedEventArgs e)
+    {
+        if (_currentUser == null)
+            return;
+
+        var window = new HistoryWindow(_currentUser);
+        await window.ShowDialog(this);
     }
 
     public User? GetCurrentUser() => _currentUser;

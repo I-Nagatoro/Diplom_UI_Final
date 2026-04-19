@@ -3,6 +3,7 @@
         x:Class="Diplom.NetworkUploadWindow"
         Width="700"
         Height="380"
+        Icon="Assets/Icon.ico"
         Title="Загрузка по ссылке"
         Background="#0F172A"
         WindowStartupLocation="CenterScreen">

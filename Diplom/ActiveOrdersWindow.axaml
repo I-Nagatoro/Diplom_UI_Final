@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Diplom.ActiveOrdersWindow"
+        x:CompileBindings="False"
+        Width="700"
+        Icon="Assets/Icon.ico"
+        Height="500"
+        Background="#0F172A"
+        Title="Активные дубляжи">
+
+  <Border Background="#111827" BorderThickness="2">
+    <StackPanel Spacing="12">
+
+      <TextBlock Text="Активные дубляжи"
+                 FontSize="24"
+                 Margin="10"
+                 Foreground="White"/>
+
+            <ListBox Name="OrdersList"
+                     Background="Transparent"
+                     BorderThickness="0">
+
+
+              <ListBox.ItemTemplate>
+                <DataTemplate>
+                  <Border Background="#1E293B"
+                          Margin="5"
+                          BorderBrush="White"
+                          Padding="10"
+                          BorderThickness="2">
+
+                    <StackPanel>
+                      <TextBlock Text="{Binding DatetimeOrder}" Foreground="White"/>
+                      <Button Content="Открыть"
+                              Click="OpenOrder"
+                              Background="#2563EB"
+                              Foreground="White"
+                              Tag="{Binding}"/>
+                    </StackPanel>
+
+                  </Border>
+                </DataTemplate>
+              </ListBox.ItemTemplate>
+
+            </ListBox>
+
+      <TextBlock x:Name="EmptyText"
+                 Text="Нет активных дубляжей"
+                 Foreground="#94A3B8"
+                 IsVisible="False"/>
+      <Button Content="Назад"
+              Click="BackClick"
+              Background="#2563EB"
+              Foreground="White"
+              Margin="10"/>
+    </StackPanel>
+  </Border>
+</Window>

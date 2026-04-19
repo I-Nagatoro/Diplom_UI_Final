@@ -2,8 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="Diplom.LocalUploadWindow"
         Width="700"
-        Height="480"
+        Height="520"
         Title="Локальный дубляж"
+        Icon="Assets/Icon.ico"
         Background="#0F172A"
         WindowStartupLocation="CenterScreen">
 
@@ -19,10 +20,35 @@
                  FontWeight="Bold"
                  Foreground="White"/>
 
-      <TextBlock Text="Выберите видео на компьютере и запустите обработку."
+      <TextBlock Text="Подключитесь к серверу дубляжа и отправьте видео на обработку."
                  Foreground="#CBD5E1"
                  TextWrapping="Wrap"/>
 
+      <!-- Секция подключения к серверу -->
+      <TextBlock Text="Сервер дубляжа"
+                 Foreground="#CBD5E1"
+                 Margin="0,6,0,0"/>
+
+      <StackPanel Orientation="Horizontal" Spacing="8">
+        <TextBox x:Name="ServerUrlBox"
+                 Watermark="https://your-server-url.com"
+                 Text="https://gjjqx-178-17-57-217.run.pinggy-free.link"
+                 MinWidth="400"/>
+        <Button x:Name="ConnectButton"
+                Content="Подключиться"
+                Click="ConnectToServer"
+                Background="#475569"
+                Foreground="White"
+                Padding="14,8"
+                MinWidth="120"/>
+      </StackPanel>
+
+      <TextBlock x:Name="ConnectionStatusText"
+                 Foreground="#F87171"
+                 FontSize="12"
+                 Margin="0,0,0,10"/>
+
+      <!-- Секция выбора файла -->
       <TextBlock Text="Файл"
                  Foreground="#CBD5E1"
                  Margin="0,6,0,0"/>
@@ -46,7 +72,8 @@
                 Background="#2563EB"
                 Foreground="White"
                 Padding="14,8"
-                MinWidth="170"/>
+                MinWidth="170"
+                IsEnabled="False"/>
 
         <Button Name="BackBtn"
                 Content="Назад"

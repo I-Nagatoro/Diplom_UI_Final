@@ -4,12 +4,14 @@
         Width="900"
         Height="500"
         Title="Регистрация"
+        Icon="Assets/Icon.ico"
         Background="#0F172A"
         WindowStartupLocation="CenterOwner">
 
   <Border Background="#111827"
           CornerRadius="18"
-          Padding="30"
+          Padding="
+          "
           Margin="20">
 
     <Grid ColumnDefinitions="1.2*,1*"

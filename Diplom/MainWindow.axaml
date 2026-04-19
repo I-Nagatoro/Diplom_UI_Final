@@ -3,8 +3,9 @@
         x:Class="Diplom.MainWindow"
         Width="1200"
         Height="760"
-        Title="Video Translator"
+        Title="Главное окно"
         Background="#0F172A"
+        Icon="Assets/Icon.ico"
         WindowStartupLocation="CenterScreen">
 
   <Grid Margin="20">
@@ -20,7 +21,7 @@
 
         <!-- Заголовок -->
         <StackPanel Spacing="10" HorizontalAlignment="Center">
-          <TextBlock Text="VIDEO TRANSLATOR"
+          <TextBlock Text="ПЕРЕВОДЧИК ВИДЕО"
                      FontSize="20"
                      Foreground="#38BDF8"
                      FontWeight="Bold"
@@ -125,45 +126,112 @@
         </Border>
 
         <!-- Карточки -->
-        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="16">
+        <Grid Grid.Row="2"
+              RowDefinitions="*,*"
+              ColumnDefinitions="*,*"
+              RowSpacing="16"
+              ColumnSpacing="16">
 
+          <!-- ЛОКАЛЬНЫЙ ДУБЛЯЖ -->
           <Border Background="#0F172A" CornerRadius="16" Padding="20">
             <StackPanel Spacing="12">
+
               <TextBlock Text="Локальный дубляж"
                          FontSize="20"
                          FontWeight="SemiBold"
                          Foreground="White"/>
-              <TextBlock Text="Загрузка видео с компьютера."
-                         Foreground="#94A3B8"/>
-              <Button x:Name="BtnLocalUpload"
-                      Content="Открыть"
+
+              <TextBlock Text="Загрузка видео с компьютера и запуск обработки."
+                         Foreground="#94A3B8"
+                         TextWrapping="Wrap"/>
+
+              <Button Content="Открыть"
                       Click="OpenLocalUpload"
                       Background="#1D4ED8"
                       Foreground="White"
-                      Padding="14,8"/>
+                      Padding="12,6"/>
+
             </StackPanel>
           </Border>
 
-          <Border Grid.Column="1" Background="#0F172A" CornerRadius="16" Padding="20">
+          <!-- ССЫЛКА -->
+          <Border Grid.Column="1"
+                  Background="#0F172A"
+                  CornerRadius="16"
+                  Padding="20">
             <StackPanel Spacing="12">
+
               <TextBlock Text="Загрузка по ссылке"
                          FontSize="20"
                          FontWeight="SemiBold"
                          Foreground="White"/>
-              <TextBlock Text="Вставьте ссылку на видео."
-                         Foreground="#94A3B8"/>
-              <Button x:Name="BtnNetworkUpload"
-                      Content="Открыть"
+
+              <TextBlock Text="Обработка видео по URL."
+                         Foreground="#94A3B8"
+                         TextWrapping="Wrap"/>
+
+              <Button Content="Открыть"
                       Click="OpenNetworkUpload"
                       Background="#1D4ED8"
                       Foreground="White"
-                      Padding="14,8"/>
+                      Padding="12,6"/>
+
+            </StackPanel>
+          </Border>
+
+          <!-- АКТИВНЫЕ ДУБЛЯЖИ -->
+          <Border Grid.Row="1"
+                  Background="#0F172A"
+                  CornerRadius="16"
+                  Padding="20">
+            <StackPanel Spacing="12">
+
+              <TextBlock Text="Активные дубляжи"
+                         FontSize="20"
+                         FontWeight="SemiBold"
+                         Foreground="White"/>
+
+              <TextBlock Text="Список текущих обработок с прогрессом."
+                         Foreground="#94A3B8"
+                         TextWrapping="Wrap"/>
+
+              <Button Content="Перейти"
+                      Click="OpenActiveOrders"
+                      Background="#475569"
+                      Foreground="White"
+                      Padding="12,6"/>
+
+            </StackPanel>
+          </Border>
+
+          <!-- ИСТОРИЯ -->
+          <Border Grid.Row="1"
+                  Grid.Column="1"
+                  Background="#0F172A"
+                  CornerRadius="16"
+                  Padding="20">
+            <StackPanel Spacing="12">
+
+              <TextBlock Text="История дубляжей"
+                         FontSize="20"
+                         FontWeight="SemiBold"
+                         Foreground="White"/>
+
+              <TextBlock Text="Все завершённые дубляжи с возможностью просмотра."
+                         Foreground="#94A3B8"
+                         TextWrapping="Wrap"/>
+
+              <Button Content="Открыть"
+                      Click="OpenHistory"
+                      Background="#475569"
+                      Foreground="White"
+                      Padding="12,6"/>
+
             </StackPanel>
           </Border>
 
         </Grid>
-
-        <!-- Logout -->
+          <!-- Logout -->
         <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">

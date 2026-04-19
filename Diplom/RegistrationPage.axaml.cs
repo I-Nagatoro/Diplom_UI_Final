@@ -29,13 +29,13 @@ public partial class RegistrationPage : Window
         if (topLevel?.StorageProvider is null)
             return;
 
-        var result = await topLevel.StorageProvider.OpenFilePickerAsync(new Avalonia.Platform.Storage.FilePickerOpenOptions
+        var result = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
             Title = "Выберите изображение профиля",
             AllowMultiple = false,
             FileTypeFilter = new[]
             {
-                new Avalonia.Platform.Storage.FilePickerFileType("Images")
+                new FilePickerFileType("Images")
                 {
                     Patterns = new[] { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp" }
                 }

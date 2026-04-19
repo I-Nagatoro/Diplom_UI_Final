@@ -15,5 +15,17 @@ public partial class Order
 
     public int UserId { get; set; }
 
+    public int? Progress { get; set; }
+
+    public string? Stage { get; set; }
+
+    public string? Status { get; set; }
+
+    public bool Completed { get; set; }
+
+    public string? TaskId { get; set; }
+
+    public string? FileId { get; set; }
+
     public virtual User User { get; set; } = null!;
 }

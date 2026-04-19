@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Diplom.Models;
 using System.Threading.Tasks;
 
 namespace Diplom;
@@ -7,6 +8,10 @@ namespace Diplom;
 public partial class NetworkUploadWindow : Window
 {
     public NetworkUploadWindow()
+    {
+        InitializeComponent();
+    }
+    public NetworkUploadWindow(User user)
     {
         InitializeComponent();
     }

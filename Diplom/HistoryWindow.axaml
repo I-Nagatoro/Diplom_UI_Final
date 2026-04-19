@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Diplom.HistoryWindow"
+        x:CompileBindings="False"
+        Width="700"
+        Height="500"
+        Icon="Assets/Icon.ico"
+        Background="#0F172A"
+        Title="История дубляжей">
+
+  <Border Background="#111827" Padding="20">
+    <StackPanel Spacing="12">
+
+      <TextBlock Text="История"
+                 FontSize="24"
+                 Foreground="White"/>
+
+      <ListBox x:Name="HistoryList">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Border Background="#1E293B" Margin="5" Padding="10">
+              <StackPanel>
+
+                <TextBlock Text="{Binding DatetimeOrder}" Foreground="White"/>
+                <TextBlock Text="{Binding DatetimeFinish}" Foreground="#94A3B8"/>
+
+                <Button Content="Открыть видео"
+                        Click="OpenVideo"
+                        Background="#2563EB"
+                        Foreground="White"
+                        Tag="{Binding}"/>
+              </StackPanel>
+            </Border>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+
+      <TextBlock x:Name="EmptyText"
+                 Text="История пуста"
+                 Foreground="#94A3B8"
+                 IsVisible="False"/>
+      <Button Content="Назад"
+              Click="BackClick"
+              Background="#2563EB"
+              Foreground="White"
+              Margin="10"/>
+    </StackPanel>
+  </Border>
+</Window>

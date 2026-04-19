@@ -4,6 +4,7 @@
         Width="420"
         Height="400"
         Title="Вход"
+        Icon="Assets/Icon.ico"
         Background="#0F172A"
         WindowStartupLocation="CenterScreen">
 

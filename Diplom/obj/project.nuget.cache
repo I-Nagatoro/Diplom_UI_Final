@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Bp/Oy9uuvHA=",
+  "dgSpecHash": "StI3EGXZquw=",
   "success": true,
   "projectFilePath": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\Diplom.csproj",
   "expectedPackageFiles": [
@@ -68,5 +68,18 @@
     "C:\\Users\\sokol\\.nuget\\packages\\system.composition.typedparts\\9.0.0\\system.composition.typedparts.9.0.0.nupkg.sha512",
     "C:\\Users\\sokol\\.nuget\\packages\\tmds.dbus.protocol\\0.21.2\\tmds.dbus.protocol.0.21.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "У пакета \"Tmds.DBus.Protocol\" 0.21.2 есть известная уязвимость https://github.com/advisories/GHSA-xrw6-gwf8-vvr9 (уровень серьезности: высокий уровень)",
+      "projectPath": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\Diplom.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\sokol\\source\\repos\\Diplom\\Diplom\\Diplom.csproj",
+      "libraryId": "Tmds.DBus.Protocol",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

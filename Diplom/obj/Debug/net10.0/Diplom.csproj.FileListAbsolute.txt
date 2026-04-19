@@ -5,9 +5,7 @@ C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.GeneratedMSBu
 C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.AssemblyInfoInputs.cache
 C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.AssemblyInfo.cs
 C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.csproj.CoreCompileInputs.cache
-C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.dll
-C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\refint\Diplom.dll
-C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.pdb
+C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.sourcelink.json
 C:\Users\sokol\source\repos\Diplom\Diplom\bin\Debug\net10.0\Diplom.exe
 C:\Users\sokol\source\repos\Diplom\Diplom\bin\Debug\net10.0\Diplom.deps.json
 C:\Users\sokol\source\repos\Diplom\Diplom\bin\Debug\net10.0\Diplom.runtimeconfig.json
@@ -167,6 +165,8 @@ C:\Users\sokol\source\repos\Diplom\Diplom\bin\Debug\net10.0\runtimes\win-arm64\n
 C:\Users\sokol\source\repos\Diplom\Diplom\bin\Debug\net10.0\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Users\sokol\source\repos\Diplom\Diplom\bin\Debug\net10.0\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.csproj.Up2Date
+C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.dll
+C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\refint\Diplom.dll
+C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.pdb
 C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.genruntimeconfig.cache
 C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\ref\Diplom.dll
-C:\Users\sokol\source\repos\Diplom\Diplom\obj\Debug\net10.0\Diplom.sourcelink.json

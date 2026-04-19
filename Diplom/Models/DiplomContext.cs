@@ -25,18 +25,18 @@ public partial class DiplomContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Username=admin;Password=123;Database=diplom");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Username=admin;Password=123; Database=diplom;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<History>(entity =>
         {
-            entity.HasKey(e => e.HistoryRecordId).HasName("history_pk");
+            entity.HasKey(e => e.HistoryRecordId).HasName("history1_pk");
 
             entity.ToTable("history");
 
             entity.Property(e => e.HistoryRecordId)
-                .ValueGeneratedNever()
+                .UseIdentityAlwaysColumn()
                 .HasColumnName("history_record_id");
             entity.Property(e => e.DatetimeFinish)
                 .HasColumnType("timestamp without time zone")
@@ -64,11 +64,29 @@ public partial class DiplomContext : DbContext
             entity.ToTable("orders");
 
             entity.Property(e => e.OrderId)
-                .ValueGeneratedNever()
+                .UseIdentityAlwaysColumn()
                 .HasColumnName("order_id");
+            entity.Property(e => e.Completed).HasColumnName("completed");
             entity.Property(e => e.DatetimeOrder)
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("datetime_order");
+            entity.Property(e => e.FileId)
+                .HasMaxLength(255)
+                .HasColumnName("file_id");
+            entity.Property(e => e.Progress)
+                .HasDefaultValue(0)
+                .HasColumnName("progress");
+            entity.Property(e => e.Stage)
+                .HasDefaultValueSql("''::character varying")
+                .HasColumnType("character varying")
+                .HasColumnName("stage");
+            entity.Property(e => e.Status)
+                .HasDefaultValueSql("'processing'::character varying")
+                .HasColumnType("character varying")
+                .HasColumnName("status");
+            entity.Property(e => e.TaskId)
+                .HasMaxLength(255)
+                .HasColumnName("task_id");
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.VideoPath)
                 .HasColumnType("character varying")
