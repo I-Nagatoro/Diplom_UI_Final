@@ -1,0 +1,145 @@
+-- DROP SCHEMA public;
+
+CREATE SCHEMA public AUTHORIZATION "admin";
+
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+-- DROP SEQUENCE public.history_history_record_id_seq;
+
+CREATE SEQUENCE public.history_history_record_id_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;
+-- DROP SEQUENCE public.orders_order_id_seq;
+
+CREATE SEQUENCE public.orders_order_id_seq
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 2147483647
+	START 1
+	CACHE 1
+	NO CYCLE;-- public.roles определение
+
+-- Drop table
+
+-- DROP TABLE public.roles;
+
+CREATE TABLE public.roles (
+	role_id int4 NOT NULL,
+	role_name varchar NOT NULL,
+	CONSTRAINT roles_pk PRIMARY KEY (role_id)
+);
+
+
+-- public.users определение
+
+-- Drop table
+
+-- DROP TABLE public.users;
+
+CREATE TABLE public.users (
+	user_id int4 NOT NULL,
+	user_name varchar NOT NULL,
+	login varchar NOT NULL,
+	"password" varchar NOT NULL,
+	role_id int4 NOT NULL,
+	image_path varchar NOT NULL,
+	CONSTRAINT users_pk PRIMARY KEY (user_id),
+	CONSTRAINT users_roles_fk FOREIGN KEY (role_id) REFERENCES public.roles(role_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+-- public.history определение
+
+-- Drop table
+
+-- DROP TABLE public.history;
+
+CREATE TABLE public.history (
+	history_record_id int4 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1 NO CYCLE) NOT NULL,
+	user_id int4 NOT NULL,
+	datetime_order timestamp NOT NULL,
+	datetime_finish timestamp NOT NULL,
+	video_uri varchar NULL,
+	video_path varchar NULL,
+	CONSTRAINT history1_pk PRIMARY KEY (history_record_id),
+	CONSTRAINT history_users_fk FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+-- public.orders определение
+
+-- Drop table
+
+-- DROP TABLE public.orders;
+
+CREATE TABLE public.orders (
+	order_id int4 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1 NO CYCLE) NOT NULL,
+	video_uri varchar NULL,
+	video_path varchar NULL,
+	datetime_order timestamp NOT NULL,
+	user_id int4 NOT NULL,
+	progress int4 DEFAULT 0 NULL,
+	stage varchar DEFAULT ''::character varying NULL,
+	status varchar DEFAULT 'processing'::character varying NULL,
+	completed bool DEFAULT false NOT NULL,
+	task_id varchar(255) NULL,
+	file_id varchar(255) NULL,
+	result_path varchar(500) NULL,
+	CONSTRAINT orders_pk PRIMARY KEY (order_id),
+	CONSTRAINT orders_users_fk FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- 1. Вставка ролей (таблица roles)
+INSERT INTO public.roles (role_id, role_name) VALUES
+    (1, 'Админ'),
+    (2, 'Клиент');
+
+-- 2. Вставка пользователей (таблица users)
+INSERT INTO public.users (user_id, user_name, login, "password", role_id, image_path) VALUES
+    (1, '123', '123', '123', 1, 'images/picture.png'),
+    (2, '1234', '1234', '1234', 2, 'images/picture.png'),
+    (0, '12345', '12345', '123456', 2, 'images/Снимок экрана 2026-02-01 230157.png'),
+    (3, '123456', '123456', '123456', 2, 'images/Снимок экрана 2026-02-01 232216.png'),
+    (4, 'Афанасьев Александр', 'XDel', '123456', 2, 'images/Снимок экрана 2026-03-09 033046.png'),
+    (5, 'Кирилл Камч', 'login', 'password', 2, 'images/20260311_105709.jpg');
+
+-- 3. Вставка заказов (таблица orders)
+-- Для полей с типом GENERATED ALWAYS AS IDENTITY используем OVERRIDING SYSTEM VALUE,
+-- чтобы явно указать значения order_id.
+INSERT INTO public.orders OVERRIDING SYSTEM VALUE
+    (order_id, video_uri, video_path, datetime_order, user_id, progress, stage, status, completed, task_id, file_id, result_path)
+VALUES
+    (45, NULL, NULL, '2026-04-19 19:41:55.171', 1, 0,
+     $$Ошибка выполнения: 
+chunk:   0%|          | 0/1010 [00:00<?, ?it/s, now=None]
+chunk:  44%|####4     | 445/1010 [00:00<00:00, 4415.64it/s, now=None]
+chunk:  96%|#########5| 969/1010 [00:00<00:00, 4895.12it/s, now=None]
+                                                                     
+Traceback (most recent call last):
+  File "C:\Users\sokol\PycharmProjects\DubbingProject\pipeline\dubbing.py", line 311, in <module>
+    main()
+  File "C:\Users\sokol\PycharmProjects\DubbingProject\pipeline\dubbing.py", line 262$$,
+     'error', true, 'e397d41b-d80f-42c1-9b22-a14c7e2f6a85', NULL, NULL),
+
+    (43, NULL, NULL, '2026-04-19 19:31:23.624', 1, 0,
+     $$Ошибка выполнения: 
+chunk:   0%|          | 0/1010 [00:00<?, ?it/s, now=None]
+chunk:  47%|####6     | 472/1010 [00:00<00:00, 4718.23it/s, now=None]
+                                                                     
+
+chunk:   0%|          | 0/908 [00:00<?, ?it/s, now=None]
+chunk:  12%|#1        | 105/908 [00:00<00:00, 942.07it/s, now=None]
+chunk:  24%|##4       | 218/908 [00:00<00:00, 1044.01it/s, now=None]
+chunk:  36%|###5      | 324/908 [00:00<00:00, 925.93it/s, now=None] 
+chunk:  46%|####6     | 420/908 [00:0$$,
+     'error', true, 'f4f88dea-8bd5-49b9-b652-9964a456f52a', NULL, NULL);
+
+-- 4. Вставка истории (таблица history)
+INSERT INTO public.history OVERRIDING SYSTEM VALUE
+    (history_record_id, user_id, datetime_order, datetime_finish, video_uri, video_path)
+VALUES
+    (6, 1, '2026-03-30 20:04:14.206', '2026-03-30 20:06:36.410', NULL, 'C:\Users\sokol\Downloads\video.mp4');
