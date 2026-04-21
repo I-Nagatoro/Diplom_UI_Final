@@ -4,7 +4,7 @@
         x:CompileBindings="False"
         Width="700"
         Icon="Assets/Icon.ico"
-        Height="500"
+        SizeToContent="Height"
         Background="#0F172A"
         Title="Активные дубляжи">
 
@@ -44,7 +44,7 @@
 
             </ListBox>
 
-      <TextBlock x:Name="EmptyText"
+      <TextBlock Name="EmptyText"
                  Text="Нет активных дубляжей"
                  Foreground="#94A3B8"
                  IsVisible="False"/>

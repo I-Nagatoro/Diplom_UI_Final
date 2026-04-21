@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Diplom;
 
@@ -24,10 +25,8 @@ public partial class RegistrationPage : Window
     private async void SelectImage(object? sender, RoutedEventArgs e)
     {
         StatusText.Text = string.Empty;
-
         var topLevel = TopLevel.GetTopLevel(this);
-        if (topLevel?.StorageProvider is null)
-            return;
+        if (topLevel?.StorageProvider is null) return;
 
         var result = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
@@ -42,8 +41,7 @@ public partial class RegistrationPage : Window
             }
         });
 
-        if (result.Count == 0)
-            return;
+        if (result.Count == 0) return;
 
         var file = result[0];
         var localPath = file.TryGetLocalPath();
@@ -98,18 +96,16 @@ public partial class RegistrationPage : Window
             return;
         }
 
-        string imagePathToSave = "images/picture.png";
+        string imagePathToSave = "images/default.png";
 
         if (!string.IsNullOrWhiteSpace(_selectedImagePath))
         {
             try
             {
-                var imagesDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images");
+                var imagesDir = Path.Combine(AppContext.BaseDirectory, "images");
                 Directory.CreateDirectory(imagesDir);
-
                 var fileName = Path.GetFileName(_selectedImagePath);
                 var destinationPath = Path.Combine(imagesDir, fileName);
-
                 File.Copy(_selectedImagePath, destinationPath, true);
                 imagePathToSave = Path.Combine("images", fileName).Replace('\\', '/');
             }
@@ -123,7 +119,6 @@ public partial class RegistrationPage : Window
         try
         {
             await using var context = new DiplomContext();
-            var notasynccont = new DiplomContext();
 
             if (await context.Users.AnyAsync(u => u.Login == login))
             {
@@ -136,10 +131,12 @@ public partial class RegistrationPage : Window
                 StatusText.Text = "Пользователь с таким именем уже существует.";
                 return;
             }
-            var userId = notasynccont.Users.Max(x=>x.UserId);
+
+            int maxId = await context.Users.MaxAsync(u => (int?)u.UserId) ?? 0;
+
             var newUser = new User
             {
-                UserId = userId + 1,
+                UserId = maxId + 1,
                 UserName = username,
                 Login = login,
                 Password = password,
@@ -153,14 +150,11 @@ public partial class RegistrationPage : Window
             _mainWindow.UpdateUIForLoggedInUser(newUser);
             Close();
         }
-        catch
+        catch (Exception ex)
         {
-            StatusText.Text = "Ошибка подключения к базе данных.";
+            StatusText.Text = $"Ошибка: {ex.Message}";
         }
     }
 
-    private void GoBack(object? sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+    private void GoBack(object? sender, RoutedEventArgs e) => Close();
 }

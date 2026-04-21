@@ -10,15 +10,13 @@
 
   <Border Background="#111827"
           CornerRadius="18"
-          Padding="
-          "
           Margin="20">
 
     <Grid ColumnDefinitions="1.2*,1*"
           RowDefinitions="Auto,*"
           ColumnSpacing="30">
 
-      <!-- HEADER -->
+      <!-- Заголовок -->
       <StackPanel Grid.ColumnSpan="2" Spacing="6" Margin="0,0,0,10">
         <TextBlock Text="Регистрация"
                    FontSize="30"

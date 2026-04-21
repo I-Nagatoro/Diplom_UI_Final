@@ -3,7 +3,7 @@
         x:Class="Diplom.HistoryWindow"
         x:CompileBindings="False"
         Width="700"
-        Height="500"
+        SizeToContent="Height"
         Icon="Assets/Icon.ico"
         Background="#0F172A"
         Title="История дубляжей">

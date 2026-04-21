@@ -1,110 +1,65 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="Diplom.LocalUploadWindow"
-        Width="700"
-        Height="520"
+        Width="800"
+        Height="500"
         Title="Локальный дубляж"
         Icon="Assets/Icon.ico"
         Background="#0F172A"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterOwner">
 
-  <Border Background="#111827"
-          CornerRadius="18"
-          Padding="24"
-          Margin="20">
-
-    <StackPanel Spacing="14">
-
-      <TextBlock Text="Локальный дубляж видео"
-                 FontSize="28"
-                 FontWeight="Bold"
-                 Foreground="White"/>
-
-      <TextBlock Text="Подключитесь к серверу дубляжа и отправьте видео на обработку."
-                 Foreground="#CBD5E1"
-                 TextWrapping="Wrap"/>
-
-      <!-- Секция подключения к серверу -->
-      <TextBlock Text="Сервер дубляжа"
-                 Foreground="#CBD5E1"
-                 Margin="0,6,0,0"/>
-
-      <StackPanel Orientation="Horizontal" Spacing="8">
-        <TextBox x:Name="ServerUrlBox"
-                 Watermark="https://your-server-url.com"
-                 Text="https://gjjqx-178-17-57-217.run.pinggy-free.link"
-                 MinWidth="400"/>
-        <Button x:Name="ConnectButton"
-                Content="Подключиться"
-                Click="ConnectToServer"
-                Background="#475569"
-                Foreground="White"
-                Padding="14,8"
-                MinWidth="120"/>
+  <Border Background="#111827" CornerRadius="18" Padding="20" Margin="20">
+    <Grid RowDefinitions="Auto,*,Auto">
+      <!-- Заголовок -->
+      <StackPanel Spacing="8" Margin="0,0,0,15">
+        <TextBlock Text="Локальный дубляж видео" FontSize="26" FontWeight="Bold" Foreground="White"/>
+        <TextBlock Text="Выберите видео на компьютере и запустите обработку." Foreground="#CBD5E1"/>
       </StackPanel>
 
-      <TextBlock x:Name="ConnectionStatusText"
-                 Foreground="#F87171"
-                 FontSize="12"
-                 Margin="0,0,0,10"/>
+      <!-- Основная область -->
+      <StackPanel Grid.Row="1" Spacing="15">
+        <!-- Подключение к серверу -->
+        <Border Background="#0F172A" CornerRadius="10" Padding="15">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Сервер дубляжа" Foreground="#CBD5E1"/>
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBox x:Name="ServerUrlBox" Grid.Column="0" Watermark="https://..." Text="https://localhost:8000"/>
+              <Button x:Name="ConnectButton" Grid.Column="1" Content="Подключиться" Click="ConnectToServer"
+                      Background="#2563EB" Foreground="White" Margin="10,0,0,0" Padding="20,8"/>
+            </Grid>
+            <TextBlock x:Name="ConnectionStatusText" Foreground="#F87171" FontSize="12"/>
+          </StackPanel>
+        </Border>
 
-      <!-- Секция выбора файла -->
-      <TextBlock Text="Файл"
-                 Foreground="#CBD5E1"
-                 Margin="0,6,0,0"/>
+        <!-- Выбор файла -->
+        <Border Background="#0F172A" CornerRadius="10" Padding="15">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Видеофайл" Foreground="#CBD5E1"/>
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBox x:Name="FilePathBox" Grid.Column="0" IsReadOnly="True" Watermark="Файл не выбран"/>
+              <Button x:Name="SelectBtn" Grid.Column="1" Content="Выбрать видео" Click="SelectFile"
+                      Background="#475569" Foreground="White" Margin="10,0,0,0" Padding="20,8"/>
+            </Grid>
+          </StackPanel>
+        </Border>
 
-      <TextBox x:Name="FilePathBox"
-               IsReadOnly="True"
-               Watermark="Путь к файлу"/>
-
-      <StackPanel Orientation="Horizontal" Spacing="12">
-        <Button Name="SelectBtn"
-                Content="Выбрать видео"
-                Click="SelectFile"
-                Background="#475569"
-                Foreground="White"
-                Padding="14,8"
-                MinWidth="150"/>
-
-        <Button Name="StartButton"
-                Content="Запустить дубляж"
-                Click="StartProcessing"
-                Background="#2563EB"
-                Foreground="White"
-                Padding="14,8"
-                MinWidth="170"
-                IsEnabled="False"/>
-
-        <Button Name="BackBtn"
-                Content="Назад"
-                Click="Back_Click"
-                Background="#2563EB"
-                Foreground="White"
-                Padding="14,8"
-                MinWidth="170"/>
+        <!-- Прогресс -->
+        <Border x:Name="ProgressPanel" Background="#0F172A" CornerRadius="10" Padding="15" IsVisible="False">
+          <StackPanel Spacing="8">
+            <TextBlock x:Name="StatusText" Foreground="White"/>
+            <ProgressBar x:Name="ProcessingBar" Height="10" Minimum="0" Maximum="100" Value="0"/>
+          </StackPanel>
+        </Border>
       </StackPanel>
 
-      <ProgressBar x:Name="ProcessingBar"
-                   Minimum="0"
-                   Maximum="100"
-                   Height="18"
-                   IsVisible="False"/>
-
-      <Button x:Name="OpenResultButton"
-              Content="Открыть итоговое видео"
-              Click="OpenResult"
-              Background="#059669"
-              Foreground="White"
-              Padding="14,8"
-              IsVisible="False"
-              HorizontalAlignment="Left"/>
-
-      <TextBlock x:Name="StatusText"
-                 Foreground="#F87171"
-                 FontWeight="SemiBold"
-                 TextWrapping="Wrap"
-                 Margin="0,4,0,0"/>
-
-    </StackPanel>
+      <!-- Кнопки управления -->
+      <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,15,0,0">
+        <Button Content="Назад" Click="Back_Click" Background="#475569" Foreground="White" Padding="20,10"/>
+        <Button x:Name="StartButton" Content="Запустить дубляж" Click="StartProcessing"
+                Background="#059669" Foreground="White" Padding="20,10" IsEnabled="False"/>
+        <Button x:Name="OpenResultButton" Content="Открыть результат" Click="OpenResult"
+                Background="#2563EB" Foreground="White" Padding="20,10" IsVisible="False"/>
+      </StackPanel>
+    </Grid>
   </Border>
 </Window>

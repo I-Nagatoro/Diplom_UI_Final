@@ -44,8 +44,4 @@
       <DependentUpon>NetworkUploadWindow.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models2\" />
-  </ItemGroup>
 </Project>

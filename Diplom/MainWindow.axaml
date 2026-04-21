@@ -10,7 +10,7 @@
 
   <Grid Margin="20">
 
-    <!-- GUEST VIEW -->
+    <!-- Режим гостя -->
     <Border x:Name="GuestContent"
             Background="#111827"
             CornerRadius="18"
@@ -88,7 +88,7 @@
       </Grid>
     </Border>
 
-    <!-- USER VIEW -->
+    <!-- Режим пользователя -->
     <Border x:Name="UserContent"
             Background="#111827"
             CornerRadius="18"
@@ -97,7 +97,7 @@
 
       <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="18">
 
-        <!-- Header -->
+        <!-- Заголовок -->
         <StackPanel Orientation="Horizontal" Spacing="14">
           <Border Width="72" Height="72" CornerRadius="36" Background="#0F172A" ClipToBounds="True">
             <Image x:Name="AvatarImage"
@@ -231,7 +231,7 @@
           </Border>
 
         </Grid>
-          <!-- Logout -->
+          <!-- Выход -->
         <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">

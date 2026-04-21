@@ -2,57 +2,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="Diplom.NetworkUploadWindow"
         Width="700"
-        Height="380"
+        SizeToContent="Height"
         Icon="Assets/Icon.ico"
         Title="Загрузка по ссылке"
         Background="#0F172A"
         WindowStartupLocation="CenterScreen">
 
-  <Border Background="#111827"
-          CornerRadius="18"
-          Padding="24"
-          Margin="20">
-
+  <Border Background="#111827" CornerRadius="18" Padding="24" Margin="20">
     <StackPanel Spacing="14">
-
-      <TextBlock Text="Загрузка видео по ссылке"
-                 FontSize="28"
-                 FontWeight="Bold"
-                 Foreground="White"/>
-
-      <TextBlock Text="Вставьте ссылку на видео и отправьте его на обработку."
-                 Foreground="#CBD5E1"
-                 TextWrapping="Wrap"/>
-
-      <TextBlock Text="Ссылка"
-                 Foreground="#CBD5E1"
-                 Margin="0,6,0,0"/>
-
-      <TextBox Name="UrlBox"
-               Watermark="https://..."/>
-      <StackPanel Orientation="Horizontal"
-                  Spacing="10">
-          <Button Content="Загрузить"
-                  Click="DownloadVideo"
-                  Background="#2563EB"
-                  Foreground="White"
-                  Padding="14,8"
-                  HorizontalAlignment="Left"
-                  MinWidth="150"/>
-          <Button Content="Назад"
-                  Click="Back_Click"
-                  Background="#2563EB"
-                  Foreground="White"
-                  Padding="14,8"
-                  HorizontalAlignment="Left"/>
+      <TextBlock Text="Загрузка видео по ссылке" FontSize="28" FontWeight="Bold" Foreground="White"/>
+      <TextBlock Text="Вставьте ссылку на видео и отправьте его на обработку." Foreground="#CBD5E1" TextWrapping="Wrap"/>
+      <TextBlock Text="Ссылка" Foreground="#CBD5E1" Margin="0,6,0,0"/>
+      <TextBox x:Name="UrlBox" Watermark="https://..."/>
+      <TextBlock Text="Сервер дубляжа" Foreground="#CBD5E1"/>
+      <Grid ColumnDefinitions="*,Auto">
+        <TextBox x:Name="ServerUrlBox" Grid.Column="0" Watermark="https://localhost:8000"/>
+        <Button x:Name="ConnectButton" Grid.Column="1" Content="Подключиться" Click="ConnectToServer"
+                Background="#2563EB" Foreground="White" Margin="10,0,0,0" Padding="20,8"/>
+      </Grid>
+      <TextBlock x:Name="ConnectionStatusText" Foreground="#F87171" FontSize="12"/>
+      <ProgressBar x:Name="ProcessingBar" Height="10" Minimum="0" Maximum="100" IsVisible="False"/>
+      <TextBlock x:Name="StatusText" Foreground="#F87171" FontWeight="SemiBold" TextWrapping="Wrap"/>
+      <StackPanel Orientation="Horizontal" Spacing="10">
+        <Button x:Name="StartButton" Content="Загрузить" Click="DownloadVideo" Background="#059669"
+                Foreground="White" Padding="14,8" HorizontalAlignment="Left" MinWidth="150" IsEnabled="False"/>
+        <Button Content="Назад" Click="Back_Click" Background="#475569" Foreground="White" Padding="14,8"/>
       </StackPanel>
-
-      <TextBlock Name="StatusText"
-                 Foreground="#F87171"
-                 FontWeight="SemiBold"
-                 TextWrapping="Wrap"
-                 Margin="0,4,0,0"/>
-
     </StackPanel>
   </Border>
 </Window>

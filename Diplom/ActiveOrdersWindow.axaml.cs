@@ -2,8 +2,6 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Diplom.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,59 +9,42 @@ namespace Diplom;
 
 public partial class ActiveOrdersWindow : Window
 {
-    private User _user;
-    private List<Order> _orders;
+    private readonly User _currentUser;
+
+    public ActiveOrdersWindow() => InitializeComponent();
 
     public ActiveOrdersWindow(User user)
     {
         InitializeComponent();
-        _user = user;
+        _currentUser = user;
         LoadOrders();
-    }
-
-    public ActiveOrdersWindow()
-    {
-        InitializeComponent();
     }
 
     private async void LoadOrders()
     {
-        using var db = new DiplomContext();
+        await using var db = new DiplomContext();
         var activeOrders = await db.Orders
-            .Where(o => !o.Completed
-                   && o.UserId == _user.UserId)
+            .Where(o => !o.Completed && o.UserId == _currentUser.UserId)
+            .Include(o => o.User)
             .ToListAsync();
 
         OrdersList.ItemsSource = activeOrders;
-
-        if (!activeOrders.Any())
-        {
-            EmptyText.IsVisible = true;
-        }
-        else
-        {
-            EmptyText.IsVisible = false;
-        }
+        EmptyText.IsVisible = !activeOrders.Any();
     }
 
     private async void OpenOrder(object? sender, RoutedEventArgs e)
     {
-        var order = (sender as Button)?.DataContext as Order;
-        if (order == null) return;
+        if (sender is not Button btn || btn.Tag is not Order order) return;
 
         Window window;
-
-        // 🔥 ЛОГИКА ВЫБОРА
         if (!string.IsNullOrEmpty(order.VideoPath))
             window = new LocalUploadWindow(order);
         else
             window = new NetworkUploadWindow();
 
         await window.ShowDialog(this);
+        LoadOrders();
     }
 
-    private void BackClick(object? sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+    private void BackClick(object? sender, RoutedEventArgs e) => Close();
 }
