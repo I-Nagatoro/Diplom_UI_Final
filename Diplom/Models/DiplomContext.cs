@@ -44,6 +44,9 @@ public partial class DiplomContext : DbContext
             entity.Property(e => e.DatetimeOrder)
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("datetime_order");
+            entity.Property(e => e.FileId)
+                .HasMaxLength(255)
+                .HasColumnName("file_id");
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.VideoPath)
                 .HasColumnType("character varying")
@@ -76,6 +79,9 @@ public partial class DiplomContext : DbContext
             entity.Property(e => e.Progress)
                 .HasDefaultValue(0)
                 .HasColumnName("progress");
+            entity.Property(e => e.ResultPath)
+                .HasMaxLength(500)
+                .HasColumnName("result_path");
             entity.Property(e => e.Stage)
                 .HasDefaultValueSql("''::character varying")
                 .HasColumnType("character varying")
@@ -141,6 +147,8 @@ public partial class DiplomContext : DbContext
                 .HasForeignKey(d => d.RoleId)
                 .HasConstraintName("users_roles_fk");
         });
+        modelBuilder.HasSequence("history_history_record_id_seq").HasMax(2147483647L);
+        modelBuilder.HasSequence("orders_order_id_seq").HasMax(2147483647L);
 
         OnModelCreatingPartial(modelBuilder);
     }

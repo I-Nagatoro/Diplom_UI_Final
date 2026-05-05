@@ -63,6 +63,7 @@ public partial class NetworkUploadWindow : Window
             if (response.IsSuccessStatusCode)
             {
                 _serverBaseUrl = url;
+                ServerConfig.ServerBaseUrl = url;
                 ServerUrlBox.Text = url;
                 ConnectionStatusText.Text = $"✅ Подключено к {url}";
                 ConnectionStatusText.Foreground = Avalonia.Media.Brushes.Green;
@@ -104,25 +105,10 @@ public partial class NetworkUploadWindow : Window
 
         try
         {
-            await using var db = new DiplomContext();
-            var order = new Order
-            {
-                VideoUri = url,
-                DatetimeOrder = DateTime.Now,
-                UserId = _currentUser.UserId,
-                Progress = 0,
-                Stage = "Загрузка по ссылке",
-                Status = "processing",
-                Completed = false
-            };
-            db.Orders.Add(order);
-            await db.SaveChangesAsync();
-            _orderId = order.OrderId;
-
+            // Отправляем только url, сервер создаст заказ и вернёт order_id
             var content = new FormUrlEncodedContent(new[]
             {
-                new KeyValuePair<string, string>("url", url),
-                new KeyValuePair<string, string>("order_id", _orderId.ToString())
+                new KeyValuePair<string, string>("url", url)
             });
 
             var response = await _httpClient.PostAsync($"{_serverBaseUrl}/dub/url", content);
@@ -130,12 +116,16 @@ public partial class NetworkUploadWindow : Window
 
             var json = await response.Content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<StartDubbingResponse>(json);
-            if (result != null)
+            if (result == null)
             {
-                order.TaskId = result.order_id.ToString();
-                await db.SaveChangesAsync();
+                StatusText.Text = "❌ Неверный ответ сервера.";
+                StartButton.IsEnabled = true;
+                ProcessingBar.IsVisible = false;
+                return;
             }
 
+            _orderId = result.order_id;
+            StatusText.Text = "Дубляж запущен, отслеживание...";
             StartTracking();
         }
         catch (Exception ex)
@@ -162,23 +152,10 @@ public partial class NetworkUploadWindow : Window
             var response = await _httpClient.GetStringAsync($"{_serverBaseUrl}/order/{_orderId}");
             var status = JsonSerializer.Deserialize<OrderStatusResponse>(response);
 
-            await Dispatcher.UIThread.InvokeAsync(async () =>
+            await Dispatcher.UIThread.InvokeAsync(() =>
             {
                 ProcessingBar.Value = status.progress;
                 StatusText.Text = $"{status.stage} ({status.progress}%)";
-
-                await using var db = new DiplomContext();
-                var order = await db.Orders.FindAsync(_orderId);
-                if (order != null)
-                {
-                    order.Progress = status.progress;
-                    order.Stage = status.stage;
-                    order.Status = status.status;
-                    order.Completed = status.completed;
-                    if (!string.IsNullOrEmpty(status.file_id))
-                        order.FileId = status.file_id;
-                    await db.SaveChangesAsync();
-                }
 
                 if (status.completed && status.status == "completed")
                 {
@@ -187,7 +164,7 @@ public partial class NetworkUploadWindow : Window
                     _resultUrl = $"{_serverBaseUrl}{status.result_url}";
                     StartButton.IsEnabled = true;
                 }
-                else if (status.status == "failed")
+                else if (status.status == "failed" || status.status == "error")
                 {
                     _timer?.Stop();
                     StatusText.Text = $"❌ Ошибка: {status.stage}";
@@ -195,8 +172,13 @@ public partial class NetworkUploadWindow : Window
                 }
             });
         }
-        catch
-        {}
+        catch (Exception ex)
+        {
+            await Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                StatusText.Text = $"Ошибка связи: {ex.Message}";
+            });
+        }
     }
 
     private void Back_Click(object? sender, RoutedEventArgs e)

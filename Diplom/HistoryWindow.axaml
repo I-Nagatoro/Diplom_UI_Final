@@ -20,15 +20,24 @@
           <DataTemplate>
             <Border Background="#1E293B" Margin="5" Padding="10">
               <StackPanel>
-
                 <TextBlock Text="{Binding DatetimeOrder}" Foreground="White"/>
                 <TextBlock Text="{Binding DatetimeFinish}" Foreground="#94A3B8"/>
-
+                <!-- Ссылка (если видео загружено по ссылке) -->
+                <TextBlock Text="{Binding VideoUri}" 
+                           Foreground="#CBD5E1" FontSize="11" 
+                           TextTrimming="CharacterEllipsis"
+                           ToolTip.Tip="{Binding VideoUri}" />
+                <!-- Локальный путь (если видео загружено с ПК) -->
+                <TextBlock Text="{Binding VideoPath}" 
+                           Foreground="#CBD5E1" FontSize="11" 
+                           TextTrimming="CharacterEllipsis"
+                           ToolTip.Tip="{Binding VideoPath}" />
                 <Button Content="Открыть видео"
                         Click="OpenVideo"
                         Background="#2563EB"
                         Foreground="White"
-                        Tag="{Binding}"/>
+                        Tag="{Binding}"
+                        Margin="0,5,0,0"/>
               </StackPanel>
             </Border>
           </DataTemplate>

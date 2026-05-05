@@ -27,5 +27,7 @@ public partial class Order
 
     public string? FileId { get; set; }
 
+    public string? ResultPath { get; set; }
+
     public virtual User User { get; set; } = null!;
 }

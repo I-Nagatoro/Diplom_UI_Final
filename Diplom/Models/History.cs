@@ -17,5 +17,7 @@ public partial class History
 
     public string? VideoPath { get; set; }
 
+    public string? FileId { get; set; }
+
     public virtual User User { get; set; } = null!;
 }

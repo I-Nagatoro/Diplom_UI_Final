@@ -35,13 +35,7 @@ public partial class ActiveOrdersWindow : Window
     private async void OpenOrder(object? sender, RoutedEventArgs e)
     {
         if (sender is not Button btn || btn.Tag is not Order order) return;
-
-        Window window;
-        if (!string.IsNullOrEmpty(order.VideoPath))
-            window = new LocalUploadWindow(order);
-        else
-            window = new NetworkUploadWindow();
-
+        var window = new LocalUploadWindow(order);
         await window.ShowDialog(this);
         LoadOrders();
     }

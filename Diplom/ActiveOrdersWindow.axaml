@@ -16,33 +16,32 @@
                  Margin="10"
                  Foreground="White"/>
 
-            <ListBox Name="OrdersList"
-                     Background="Transparent"
-                     BorderThickness="0">
-
-
-              <ListBox.ItemTemplate>
-                <DataTemplate>
-                  <Border Background="#1E293B"
-                          Margin="5"
-                          BorderBrush="White"
-                          Padding="10"
-                          BorderThickness="2">
-
-                    <StackPanel>
-                      <TextBlock Text="{Binding DatetimeOrder}" Foreground="White"/>
-                      <Button Content="Открыть"
-                              Click="OpenOrder"
-                              Background="#2563EB"
-                              Foreground="White"
-                              Tag="{Binding}"/>
-                    </StackPanel>
-
-                  </Border>
-                </DataTemplate>
-              </ListBox.ItemTemplate>
-
-            </ListBox>
+      <ListBox Name="OrdersList"
+               Background="Transparent"
+               BorderThickness="0">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Border Background="#1E293B"
+                    Margin="5"
+                    BorderBrush="White"
+                    Padding="10"
+                    BorderThickness="2">
+              <StackPanel Spacing="5">
+                <TextBlock Text="{Binding DatetimeOrder}" Foreground="White"/>
+                <TextBlock Text="{Binding Stage}" Foreground="#CBD5E1" FontSize="12"/>
+                <ProgressBar Height="8" Minimum="0" Maximum="100" Value="{Binding Progress}" />
+                <TextBlock Foreground="White" Text="{Binding Progress, StringFormat='{}{0}%'}" />
+                <Button Content="Открыть"
+                        Click="OpenOrder"
+                        Background="#2563EB"
+                        Foreground="White"
+                        Tag="{Binding}"
+                        Margin="0,5,0,0"/>
+              </StackPanel>
+            </Border>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
 
       <TextBlock Name="EmptyText"
                  Text="Нет активных дубляжей"

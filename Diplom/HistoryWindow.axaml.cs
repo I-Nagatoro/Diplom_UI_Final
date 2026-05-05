@@ -1,7 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 using Diplom.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -10,6 +12,9 @@ namespace Diplom;
 public partial class HistoryWindow : Window
 {
     private readonly User _currentUser;
+
+    // Храним адрес сервера (заполняется при открытии из MainWindow или LocalUploadWindow)
+    public static string? ServerBaseUrl { get; set; }
 
     public HistoryWindow() => InitializeComponent();
 
@@ -36,12 +41,22 @@ public partial class HistoryWindow : Window
     {
         if (sender is not Button btn || btn.Tag is not History record) return;
 
-        string? path = record.VideoPath ?? record.VideoUri;
-        if (string.IsNullOrEmpty(path)) return;
+        string? url = null;
+
+        if (!string.IsNullOrEmpty(record.FileId) && !string.IsNullOrEmpty(ServerConfig.ServerBaseUrl))
+        {
+            url = $"{ServerConfig.ServerBaseUrl}/download/{record.FileId}";
+        }
+        else
+        {
+            url = record.VideoPath ?? record.VideoUri;
+        }
+
+        if (string.IsNullOrEmpty(url)) return;
 
         Process.Start(new ProcessStartInfo
         {
-            FileName = path,
+            FileName = url,
             UseShellExecute = true
         });
     }

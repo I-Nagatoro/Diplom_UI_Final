@@ -21,6 +21,8 @@ public partial class LocalUploadWindow : Window
     private int _orderId;
     private DispatcherTimer? _timer;
 
+    // Публичное статическое свойство для доступа из других окон (например, HistoryWindow)
+
     public LocalUploadWindow() => InitializeComponent();
 
     public LocalUploadWindow(User user)
@@ -35,27 +37,55 @@ public partial class LocalUploadWindow : Window
         _ = TryAutoConnect();
     }
 
-    public LocalUploadWindow(Order existingOrder)
+    // Конструктор для открытия активного заказа
+    public LocalUploadWindow(Order order)
     {
         InitializeComponent();
-        _currentUser = existingOrder.User!;
-        _orderId = existingOrder.OrderId;
-        FilePathBox.Text = existingOrder.VideoPath ?? "";
+        _currentUser = order.User ?? new User(); // на случай, если User не загружен
         var handler = new HttpClientHandler
         {
             ServerCertificateCustomValidationCallback = (_, _, _, _) => true
         };
         _httpClient = new HttpClient(handler) { Timeout = TimeSpan.FromMinutes(10) };
-        _ = TryAutoConnect();
 
-        if (existingOrder.Progress < 100 && !existingOrder.Completed)
+        // Подхватываем данные заказа
+        _orderId = order.OrderId;
+        if (!string.IsNullOrEmpty(order.VideoPath))
+            FilePathBox.Text = order.VideoPath;
+
+        // Используем последний известный URL сервера
+        _serverBaseUrl = ServerConfig.ServerBaseUrl ?? string.Empty;
+        if (!string.IsNullOrEmpty(_serverBaseUrl))
+        {
+            ServerUrlBox.Text = _serverBaseUrl;
+            ConnectionStatusText.Text = $"✅ Подключено к {_serverBaseUrl}";
+            ConnectionStatusText.Foreground = Avalonia.Media.Brushes.Green;
+        }
+        else
+        {
+            ConnectionStatusText.Text = "Неизвестный сервер. Введите URL и нажмите Подключиться.";
+            ConnectionStatusText.Foreground = Avalonia.Media.Brushes.Red;
+            StartButton.IsEnabled = false;
+            return;
+        }
+
+        // Если заказ ещё не завершён, сразу начинаем отслеживание прогресса
+        if (order.Progress < 100 && !order.Completed)
         {
             StartTracking();
+            // Блокируем кнопку отправки, т.к. дубляж уже идёт
+            StartButton.IsEnabled = false;
+            SelectBtn.IsEnabled = false;
+            ProgressPanel.IsVisible = true;
         }
-        else if (existingOrder.Completed && existingOrder.Status == "completed")
+        else if (order.Completed && order.Status == "completed")
         {
+            // Если дубляж завершён, показываем кнопку для скачивания
+            StartButton.IsEnabled = false;
+            SelectBtn.IsEnabled = false;
             OpenResultButton.IsVisible = true;
-            _resultUrl = $"{_serverBaseUrl}/download/{existingOrder.FileId}";
+            _resultUrl = $"{_serverBaseUrl}/download/{order.FileId}";
+            StatusText.Text = "✅ Дубляж завершён. Нажмите «Открыть итоговое видео».";
         }
     }
 
@@ -88,6 +118,7 @@ public partial class LocalUploadWindow : Window
             if (response.IsSuccessStatusCode)
             {
                 _serverBaseUrl = url;
+                ServerConfig.ServerBaseUrl = url;   
                 ServerUrlBox.Text = url;
                 ConnectionStatusText.Text = $"✅ Подключено к {url}";
                 ConnectionStatusText.Foreground = Avalonia.Media.Brushes.Green;
@@ -158,41 +189,26 @@ public partial class LocalUploadWindow : Window
 
         try
         {
-            // Сохраняем заказ в БД
-            await using var db = new DiplomContext();
-            var order = new Order
-            {
-                VideoPath = FilePathBox.Text,
-                DatetimeOrder = DateTime.Now,
-                UserId = _currentUser.UserId,
-                Progress = 0,
-                Stage = "Отправка",
-                Status = "processing",
-                Completed = false
-            };
-            db.Orders.Add(order);
-            await db.SaveChangesAsync();
-            _orderId = order.OrderId;
-
-            // Отправляем на сервер
             using var formData = new MultipartFormDataContent();
             using var fileStream = File.OpenRead(FilePathBox.Text);
             var fileContent = new StreamContent(fileStream);
             fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("video/mp4");
             formData.Add(fileContent, "file", Path.GetFileName(FilePathBox.Text));
-            formData.Add(new StringContent(_orderId.ToString()), "order_id");
+            formData.Add(new StringContent(FilePathBox.Text), "video_path");   // передаём путь для сохранения в БД
 
             var response = await _httpClient.PostAsync($"{_serverBaseUrl}/dub/", formData);
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<StartDubbingResponse>(json);
-            if (result != null)
+            if (result == null)
             {
-                order.TaskId = result.order_id.ToString();
-                await db.SaveChangesAsync();
+                StatusText.Text = "❌ Неверный ответ сервера.";
+                return;
             }
 
+            _orderId = result.order_id;
+            StatusText.Text = "Дубляж запущен, отслеживание...";
             StartTracking();
         }
         catch (Exception ex)
@@ -205,10 +221,7 @@ public partial class LocalUploadWindow : Window
 
     private void StartTracking()
     {
-        _timer = new DispatcherTimer
-        {
-            Interval = TimeSpan.FromSeconds(2)
-        };
+        _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
         _timer.Tick += async (_, _) => await CheckProgress();
         _timer.Start();
     }
@@ -222,24 +235,10 @@ public partial class LocalUploadWindow : Window
             var response = await _httpClient.GetStringAsync($"{_serverBaseUrl}/order/{_orderId}");
             var status = JsonSerializer.Deserialize<OrderStatusResponse>(response);
 
-            await Dispatcher.UIThread.InvokeAsync(async () =>
+            await Dispatcher.UIThread.InvokeAsync(() =>
             {
                 ProcessingBar.Value = status.progress;
                 StatusText.Text = $"{status.stage} ({status.progress}%)";
-
-                // Обновляем БД
-                await using var db = new DiplomContext();
-                var order = await db.Orders.FindAsync(_orderId);
-                if (order != null)
-                {
-                    order.Progress = status.progress;
-                    order.Stage = status.stage;
-                    order.Status = status.status;
-                    order.Completed = status.completed;
-                    if (!string.IsNullOrEmpty(status.file_id))
-                        order.FileId = status.file_id;
-                    await db.SaveChangesAsync();
-                }
 
                 if (status.completed && status.status == "completed")
                 {
@@ -250,7 +249,7 @@ public partial class LocalUploadWindow : Window
                     StartButton.IsEnabled = true;
                     SelectBtn.IsEnabled = true;
                 }
-                else if (status.status == "failed")
+                else if (status.status == "error" || status.status == "failed")
                 {
                     _timer?.Stop();
                     StatusText.Text = $"❌ Ошибка: {status.stage}";
